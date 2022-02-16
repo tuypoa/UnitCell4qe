@@ -2,36 +2,41 @@ package lapfarsc.qe.firstrun.dto;
 
 public class AtomoDTO {
 
-	private String elemento;
-	private Float posicaoX;
-	private Float posicaoY;
-	private Float posicaoZ;
+	private String elementId;
+	private String elementType;
+	private Float xFract;
+	private Float yFract;
+	private Float zFract;
 	
-	public String getElemento() {
-		return elemento;
+	public String getElementId() {
+		return elementId;
 	}
-	public void setElemento(String elemento) {
-		this.elemento = elemento;
+	public void setElementId(String elementId) {
+		this.elementId = elementId;
 	}
-	public Float getPosicaoX() {
-		return posicaoX;
+	public String getElementType() {
+		return elementType;
 	}
-	public void setPosicaoX(Float posicaoX) {
-		this.posicaoX = posicaoX;
+	public void setElementType(String elementType) {
+		this.elementType = elementType;
 	}
-	public Float getPosicaoY() {
-		return posicaoY;
+	public Float getxFract() {
+		return xFract;
 	}
-	public void setPosicaoY(Float posicaoY) {
-		this.posicaoY = posicaoY;
+	public void setxFract(Float xFract) {
+		this.xFract = xFract;
 	}
-	public Float getPosicaoZ() {
-		return posicaoZ;
+	public Float getyFract() {
+		return yFract;
 	}
-	public void setPosicaoZ(Float posicaoZ) {
-		this.posicaoZ = posicaoZ;
+	public void setyFract(Float yFract) {
+		this.yFract = yFract;
 	}
-	
-	
+	public Float getzFract() {
+		return zFract;
+	}
+	public void setzFract(Float zFract) {
+		this.zFract = zFract;
+	}
 	
 }
