@@ -3,7 +3,7 @@ best way to configure molecular structure in unit cell for first run on Quantum 
 
 **
 <p>
- This script will place inside a unit cell and export the files extracted directly from Molegro (.pdb) to .CIF to be used in BURAI.
+ This script create a unit cell and put inside a molecular complex extracted directly from Molegro (.PDB file)
 </p>
 
 <pre>
