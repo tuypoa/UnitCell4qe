@@ -1,13 +1,20 @@
 package lapfarsc.qe.firstrun.dto;
 
-public class CristalDTO {
+public class CrystalDTO {
 
+	
 	private Integer a;
 	private Integer b;
 	private Integer c;
 	private Integer alpha;
 	private Integer beta;
 	private Integer gamma;
+	
+	public CrystalDTO() {
+		this.alpha = 90;
+		this.beta = 90;
+		this.gamma = 90;
+	}
 	
 	public Integer getA() {
 		return a;
@@ -30,21 +37,13 @@ public class CristalDTO {
 	public Integer getAlpha() {
 		return alpha;
 	}
-	public void setAlpha(Integer alpha) {
-		this.alpha = alpha;
-	}
+	
 	public Integer getBeta() {
 		return beta;
 	}
-	public void setBeta(Integer beta) {
-		this.beta = beta;
-	}
+	
 	public Integer getGamma() {
 		return gamma;
 	}
-	public void setGamma(Integer gamma) {
-		this.gamma = gamma;
-	}
-	
 	
 }
