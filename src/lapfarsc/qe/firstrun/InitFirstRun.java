@@ -256,8 +256,11 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 					sba.append( s ).append("\n");
 				}
 			}
-			template = template.replace("{LIST_ATOM_CONNECT}", sba.toString().substring(0, sba.length()-1)); 
-			
+			if(sba.length()>0) {
+				template = template.replace("{LIST_ATOM_CONNECT}", sba.toString().substring(0, sba.length()-1)); 
+			}else {
+				template = template.replace("\n{LIST_ATOM_CONNECT}", "");
+			}
 			break;
 		case CIF:
 			/*
