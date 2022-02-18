@@ -1,0 +1,37 @@
+
+#######################################################################
+#
+#                 Cambridge Crystallographic Data Centre
+#
+#######################################################################
+#
+#   This CIF has been generated from UnitCell4qe
+#   https://github.com/tuypoa/UnitCell4qe
+# 
+#######################################################################
+
+data{FILENAME}
+_symmetry_cell_setting           triclinic
+_symmetry_space_group_name_H-M   'P 1'
+_symmetry_Int_Tables_number      1
+_space_group_name_Hall           'P 1'
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z
+_cell_length_a                   {CELL_A}
+_cell_length_b                   {CELL_B}
+_cell_length_c                   {CELL_C}
+_cell_angle_alpha                {CELL_ALPHA}
+_cell_angle_beta                 {CELL_BETA}
+_cell_angle_gamma                {CELL_GAMMA}
+_cell_volume                     {CELL_VOLUME}
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+{LIST_ATOM_COORD_CRYSTAL}
+
+#END
