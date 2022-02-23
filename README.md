@@ -8,21 +8,19 @@ best way to configure molecular structure in unit cell for first run on Quantum 
 
 <pre>
 [HOW TO EXECUTE]
-$ java -jar UnitCell4qe.jar /home/tuy/Desktop/DrugDesign/ Macitentan
+$ java -jar UnitCell4qe.jar /home/tuy/Desktop/DrugDesign/PDBFiles/
 
-Arg0 = Work path <br/>
-Arg1 = Molecule name path
+Arg0 = PDB's Files path
 </pre>
 
 
 [Expected files in your system]
 <pre>
-DrugDesign/
- | Macitentan/
- | | 04-unitcell/
- |   | UnitCell4qe/
- |     *PDB files written by MVD (molegro virtual docker) 
- | scripts/
-    TEMPLATE_CIF_FILE.cif
-    TEMPLATE_PDB_FILE.pdb
+
+└── DrugDesign/
+    └── PDBFiles/
+        └── file1.pdb
+        └── file2.pdb
+        └── file3.pdb        
+            *PDB files written by MVD (molegro virtual docker) 
 </pre>
