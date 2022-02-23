@@ -11,7 +11,9 @@ import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,20 +25,7 @@ import lapfarsc.qe.firstrun.util.Dominios.FileTypeEnum;
 public class InitFirstRun {
 
 	public static String PREFIX = "UnitCell4qe";
-	
-	//PATH OF PDB FILES EXTRACTED FROM MOLEGRO TO BE PROCESSED
-	private File rootPathPDB = null;
-	
-	private File templatePath = null;
-	
-	public InitFirstRun(String pathPDB) {
-		this.rootPathPDB = new File(pathPDB);
-		
-		ClassLoader classLoader = this.getClass().getClassLoader();
-		templatePath = new File( classLoader.getResource(".").getPath() + File.separator + 
-							"lapfarsc/qe/firstrun/resources/" );
-	}
-	
+
 	public static void main(String[] args) throws Exception{
 		int countGravados = 0;
 		int countLidos = 0;
@@ -69,7 +58,7 @@ public class InitFirstRun {
 				return;
 			}
 			
-			InitFirstRun init = new InitFirstRun(rootPath);
+			InitFirstRun init = new InitFirstRun();
 			
 			float span = 1; //angstrom
 
@@ -220,7 +209,10 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 
 	public void gravarComplexDTO(String path, FileTypeEnum tipo, ComplexDTO complex) throws IOException {
 		//System.out.println(path);
-		String template = loadTextFile(new File( templatePath.getAbsolutePath() + File.separator + tipo.getTemplate() ));
+		
+		String template = loadTextFileResource( this.getClass()
+            .getClassLoader()
+            .getResourceAsStream("lapfarsc/qe/firstrun/resources/"+tipo.getTemplate())  );
 		path = path.substring( 0, path.lastIndexOf( "." ) )+ tipo.getExtensao();
 		
 		File fileOutput = new File( path );
@@ -311,6 +303,21 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 		}
 		saveTextFile(fileOutput, template);
 	}
+
+	
+	public String loadTextFileResource(InputStream is) throws IOException {
+		StringBuilder conteudo = new StringBuilder();
+        try (InputStreamReader isr = new InputStreamReader(is); 
+                BufferedReader br = new BufferedReader(isr);) 
+        {
+            String line;
+            while ((line = br.readLine()) != null) {
+                conteudo.append(line).append("\n");
+            }
+            is.close();
+        }
+        return conteudo.toString();
+    }
 
 	
 	public String loadTextFile(File file) throws IOException {
