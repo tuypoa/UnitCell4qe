@@ -8,10 +8,10 @@ package lapfarsc.qe.firstrun;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +23,19 @@ import lapfarsc.qe.firstrun.util.Dominios.FileTypeEnum;
 public class InitFirstRun {
 
 	public static String PREFIX = "UnitCell4qe";
-	public static String TEMPLATES = "scripts/";
 	
 	//PATH OF PDB FILES EXTRACTED FROM MOLEGRO TO BE PROCESSED
-	public static String ARQUIVOS_PDB = "/04-unitcell/"+File.separator+PREFIX+File.separator;
+	private File rootPathPDB = null;
 	
-	private String rootPath = null;
+	private File templatePath = null;
+	
+	public InitFirstRun(String pathPDB) {
+		this.rootPathPDB = new File(pathPDB);
+		
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		templatePath = new File( classLoader.getResource(".").getPath() + File.separator + 
+							"lapfarsc/qe/firstrun/resources/" );
+	}
 	
 	public static void main(String[] args) throws Exception{
 		int countGravados = 0;
@@ -36,17 +43,16 @@ public class InitFirstRun {
 		
 		try {
 			//System.out.println("InitFirstRun...");
-			if(args==null || args.length < 2) {
-				System.out.println("--> Arg0 (ROOT SYSTEM FOLDER) and Arg1 (MOLECULE NAME FOLDER) IS REQUIRED.");
+			if(args==null || args.length < 1) {
+				System.out.println("--> Arg0 (PDB'S FILE PATH) IS REQUIRED.");
 				return;
 			}
 			String rootPath = args[0];
-			String molecula = args[1];
 			
-			File path = new File(rootPath + File.separator + molecula + File.separator + ARQUIVOS_PDB);
+			File path = new File(rootPath);
 			
 			if(!path.exists()) {
-				System.out.println("--> PATH DOS NOT EXIST: "+path.getAbsolutePath());
+				System.out.println("--> PATH DOES NOT EXIST: "+path.getAbsolutePath());
 				return;
 			}
 			
@@ -58,8 +64,12 @@ public class InitFirstRun {
 				}
 			});
 			
-			InitFirstRun init = new InitFirstRun();
-			init.rootPath  = rootPath;
+			if(arquivos==null || arquivos.length == 0) {
+				System.out.println("--> PDB'S FILE NOT FOUND: "+path.getAbsolutePath());
+				return;
+			}
+			
+			InitFirstRun init = new InitFirstRun(rootPath);
 			
 			float span = 1; //angstrom
 
@@ -210,7 +220,7 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 
 	public void gravarComplexDTO(String path, FileTypeEnum tipo, ComplexDTO complex) throws IOException {
 		//System.out.println(path);
-		String template = loadTextFile(new File(rootPath + File.separator + TEMPLATES + File.separator + tipo.getTemplate() ));
+		String template = loadTextFile(new File( templatePath.getAbsolutePath() + File.separator + tipo.getTemplate() ));
 		path = path.substring( 0, path.lastIndexOf( "." ) )+ tipo.getExtensao();
 		
 		File fileOutput = new File( path );
