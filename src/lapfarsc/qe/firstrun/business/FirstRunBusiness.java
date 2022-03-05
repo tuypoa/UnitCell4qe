@@ -69,7 +69,7 @@ public class FirstRunBusiness {
 		
 		double rotationX[][] = null; 
 		double rotationY[][] = null;
-		double rotationZ[][] = null;
+		//double rotationZ[][] = null;
 		
 		//definir array xyz
 		double atoms[][] = new double[listAtomDTO.size()][3];
@@ -79,10 +79,10 @@ public class FirstRunBusiness {
 			atoms[i][2] = listAtomDTO.get(i).getZ();
 		}
 	
-		for (int anguloX = 1; anguloX <= 360; anguloX++) {
+		for (int anguloX = 0; anguloX <= 360; anguloX++) {
 			rotationX = new double[][]{{1,0,0}, {0, Math.cos(anguloX), -1*Math.sin(anguloX)}, {0, Math.sin(anguloX), Math.cos(anguloX)}};
 			
-			for (int anguloY = 1; anguloY <= 360; anguloY++) {
+			for (int anguloY = 0; anguloY <= 360; anguloY++) {
 				rotationY = new double[][]{{Math.cos(anguloY),0,Math.sin(anguloY)}, {0, 1, 0}, {-1*Math.sin(anguloY), 0, Math.cos(anguloY)}};
 				
 				//for (int anguloZ = 1; anguloZ <= 360; anguloZ++) {
