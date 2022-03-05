@@ -63,13 +63,19 @@ public class InitFirstRun {
 						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_"+file.getName(), 
 								FileTypeEnum.CIF, complex);
 						countGravados++;
-						
+						/*firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_"+file.getName(), 
+								FileTypeEnum.IN, complex);
+						countGravados++;
+						*/
 						
 						//caixa com menor volume atomos
 						firstrun.bestFitAtomsCrystal(complex);
 						
 						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_BestFit_"+file.getName(), 
 								FileTypeEnum.CIF, complex);
+						countGravados++;
+						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_BestFit_"+file.getName(), 
+								FileTypeEnum.IN, complex);
 						countGravados++;
 					}
 	

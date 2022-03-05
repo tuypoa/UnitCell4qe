@@ -7,7 +7,8 @@ public class Dominios {
 	
 	public enum FileTypeEnum{
 		PDB(1,".pdb", "TEMPLATE_PDB_FILE.pdb"),
-		CIF(2,".cif", "TEMPLATE_CIF_FILE.cif");
+		CIF(2,".cif", "TEMPLATE_CIF_FILE.cif"),
+		IN(2,".in", "TEMPLATE_IN_FILE.in"),;
 		int i;
 		String extensao;
 		String template;

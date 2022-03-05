@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import lapfarsc.qe.firstrun.dto.AtomDTO;
@@ -346,6 +347,7 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 				template = template.replace("\n{LIST_ATOM_CONNECT}", "");
 			}
 			break;
+			
 		case CIF:
 			/*
 			 UC_{FILENAME}
@@ -378,6 +380,33 @@ HETATM    1 Br   PM6     1     -23.342  12.943   6.922  1.00  0.00          Br
 						String.format("%6f", a.getZ() / complex.getCrystalDTO().getC() ) ; 
 				sba.append( linha ).append("\n");
 			}
+			template = template.replace("{LIST_ATOM_COORD_CRYSTAL}", sba.toString().substring(0, sba.length()-1)); 
+				
+			break;
+		case IN:
+			template = template.replace("{FILENAME}", fileOutput.getName().replaceAll(tipo.getExtensao(),""));
+			template = template.replace("{CELL_A}", String.format("%d", complex.getCrystalDTO().getA() ) );
+			template = template.replace("{CELL_B}", String.format("%d", complex.getCrystalDTO().getB() ) );
+			template = template.replace("{CELL_C}", String.format("%d", complex.getCrystalDTO().getC() ) );
+			
+			sba = new StringBuilder();
+			la = complex.getListAtomDTO();
+			HashMap<String, Integer> ntyp = new HashMap<String, Integer>();
+			int nat = 0;
+			for (AtomDTO a : la) {
+				//BR      3.222996   9.197000   8.466000
+				String linha =  String.format("%-5s", a.getElementType().trim() ) + " " +
+						String.format("%10.6f", a.getX() ) + " " +
+						String.format("%10.6f", a.getY() ) + " " +
+						String.format("%10.6f", a.getZ() ) ; 
+				sba.append( linha ).append("\n");
+				
+				nat++;
+				ntyp.put(a.getElementType().trim().toUpperCase(), 0);
+			}
+			template = template.replace("{NAT}", String.format("%d", nat ) );
+			template = template.replace("{NTYP}", String.format("%d", ntyp.size() ) );
+			
 			template = template.replace("{LIST_ATOM_COORD_CRYSTAL}", sba.toString().substring(0, sba.length()-1)); 
 				
 			break;

@@ -1,0 +1,24 @@
+&CONTROL
+  nstep = 1000
+  forc_conv_thr =  1.00000e-03
+  calculation = "vc-relax"
+  pseudo_dir  = "../../../biblioteca/pseudopotentials"
+  outdir      = "./{FILENAME}_tmp"
+/
+&SYSTEM
+    ibrav       = 0
+    nat         = {NAT}
+    ntyp        = {NTYP}
+/
+
+K_POINTS automatic
+2 2 2 1 1 1
+
+CELL_PARAMETERS {angstrom}
+ {CELL_A}.000000   0.000000   0.000000
+  0.000000  {CELL_B}.000000   0.000000
+  0.000000   0.000000  {CELL_C}.000000
+
+ATOMIC_POSITIONS {angstrom}
+{LIST_ATOM_COORD_CRYSTAL}
+
