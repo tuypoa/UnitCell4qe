@@ -15,14 +15,14 @@ public class ComplexDTO {
 	private CrystalDTO crystalDTO;
 	
 
-	private Float minX;
-	private Float maxX;
+	private Double minX;
+	private Double maxX;
 	
-	private Float minY;
-	private Float maxY;
+	private Double minY;
+	private Double maxY;
 	
-	private Float minZ;
-	private Float maxZ;
+	private Double minZ;
+	private Double maxZ;
 	
 	
 	public List<AtomDTO> getListAtomDTO() {
@@ -45,40 +45,40 @@ public class ComplexDTO {
 		this.file = file;
 	}
 	
-	public Float getMinX() {
+	public Double getMinX() {
 		return minX;
 	}
-	public void setMinX(Float minX) {
+	public void setMinX(Double minX) {
 		this.minX = minX;
 	}
-	public Float getMaxX() {
+	public Double getMaxX() {
 		return maxX;
 	}
-	public void setMaxX(Float maxX) {
+	public void setMaxX(Double maxX) {
 		this.maxX = maxX;
 	}
-	public Float getMinY() {
+	public Double getMinY() {
 		return minY;
 	}
-	public void setMinY(Float minY) {
+	public void setMinY(Double minY) {
 		this.minY = minY;
 	}
-	public Float getMaxY() {
+	public Double getMaxY() {
 		return maxY;
 	}
-	public void setMaxY(Float maxY) {
+	public void setMaxY(Double maxY) {
 		this.maxY = maxY;
 	}
-	public Float getMinZ() {
+	public Double getMinZ() {
 		return minZ;
 	}
-	public void setMinZ(Float minZ) {
+	public void setMinZ(Double minZ) {
 		this.minZ = minZ;
 	}
-	public Float getMaxZ() {
+	public Double getMaxZ() {
 		return maxZ;
 	}
-	public void setMaxZ(Float maxZ) {
+	public void setMaxZ(Double maxZ) {
 		this.maxZ = maxZ;
 	}
 	public FileTypeEnum getFileType() {

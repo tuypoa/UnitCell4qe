@@ -2,6 +2,9 @@ package lapfarsc.qe.firstrun.util;
 
 public class Dominios {
 
+	public static String PREFIX = "UnitCell4qe";
+	
+	
 	public enum FileTypeEnum{
 		PDB(1,".pdb", "TEMPLATE_PDB_FILE.pdb"),
 		CIF(2,".cif", "TEMPLATE_CIF_FILE.cif");
