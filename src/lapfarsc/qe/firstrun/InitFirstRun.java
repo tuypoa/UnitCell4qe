@@ -60,7 +60,7 @@ public class InitFirstRun {
 						firstrun.firstFitAtomsCrystal(complex);
 						
 						//gravar arquivo de resultado em CIF
-						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_"+file.getName(), 
+						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"-default_"+file.getName(), 
 								FileTypeEnum.CIF, complex);
 						countGravados++;
 						/*firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_"+file.getName(), 
@@ -71,12 +71,12 @@ public class InitFirstRun {
 						//caixa com menor volume atomos
 						firstrun.bestFitAtomsCrystal(complex);
 						
-						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_BestFit_"+file.getName(), 
+						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"-rotated_"+file.getName(), 
 								FileTypeEnum.CIF, complex);
 						countGravados++;
-						firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_BestFit_"+file.getName(), 
+						/*firstrun.gravarComplexDTO(path.getAbsolutePath()+File.separator+ Dominios.PREFIX+"_BestFit_"+file.getName(), 
 								FileTypeEnum.IN, complex);
-						countGravados++;
+						countGravados++;*/
 					}
 	
 					//break;

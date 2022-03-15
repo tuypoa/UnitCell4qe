@@ -2,7 +2,7 @@ package lapfarsc.qe.firstrun.util;
 
 public class Dominios {
 
-	public static String PREFIX = "UnitCell4qe";
+	public static String PREFIX = "UC";
 	
 	
 	public enum FileTypeEnum{

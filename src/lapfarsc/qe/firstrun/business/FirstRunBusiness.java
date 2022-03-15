@@ -25,7 +25,7 @@ import lapfarsc.qe.firstrun.util.Dominios.FileTypeEnum;
 public class FirstRunBusiness {
 	
 	public void firstFitAtomsCrystal(ComplexDTO complex) {
-		double span = 1; //angstrom
+		double span = 1.5; //angstrom
 
 		double diffX = diffCoordCartesiana( complex.getMinX(), span);
 		double diffY = diffCoordCartesiana( complex.getMinY(), span);
@@ -55,7 +55,7 @@ public class FirstRunBusiness {
 	}
 	
 	public void bestFitAtomsCrystal(ComplexDTO complex) {
-		double span = .5; //angstrom
+		double span = 1.5; //angstrom
 		
 		if(complex.getCrystalDTO()==null) {
 			firstFitAtomsCrystal(complex);
