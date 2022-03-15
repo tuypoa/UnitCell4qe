@@ -113,24 +113,41 @@ public class FirstRunBusiness {
 					if(maxZ < movedAtoms[i][2]) maxZ = movedAtoms[i][2];
 				}
 				
-				if(minX <0) {
+				if(minX < span) {
 					double diffX = diffCoordCartesiana( minX, span);
 					for (int i = 0; i < movedAtoms.length; i++) {
 						movedAtoms[i][0] = movedAtoms[i][0] + diffX;
 					}
 				}
-				if(minY <0) {
+				if(minY < span) {
 					double diffY = diffCoordCartesiana( minY, span);
 					for (int i = 0; i < movedAtoms.length; i++) {
 						movedAtoms[i][1] = movedAtoms[i][1] + diffY;
 					}
 				}
-				if(minZ <0) {
+				if(minZ < span) {
 					double diffZ = diffCoordCartesiana( minZ, span);
 					for (int i = 0; i < movedAtoms.length; i++) {
 						movedAtoms[i][2] = movedAtoms[i][2] + diffZ;
 					}
 				}
+				
+				//redefinir
+				minX = 1000;
+				maxX = -1000;
+				minY = 1000;
+				maxY = -1000;
+				minZ = 1000;
+				maxZ = -1000;
+				for (int i = 0; i < movedAtoms.length; i++) {
+					if(minX > movedAtoms[i][0]) minX = movedAtoms[i][0]; 
+					if(minY > movedAtoms[i][1]) minY = movedAtoms[i][1]; 
+					if(minZ > movedAtoms[i][2]) minZ = movedAtoms[i][2];
+					if(maxX < movedAtoms[i][0]) maxX = movedAtoms[i][0]; 
+					if(maxY < movedAtoms[i][1]) maxY = movedAtoms[i][1]; 
+					if(maxZ < movedAtoms[i][2]) maxZ = movedAtoms[i][2];
+				}			
+				
 				//tamanho da celula unitaria
 				double ladoA = diffCoordCartesiana( minX, maxX ) + span*2 ;
 				double ladoB = diffCoordCartesiana( minY, maxY ) + span*2 ;
