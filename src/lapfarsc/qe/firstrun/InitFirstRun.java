@@ -15,7 +15,6 @@ import lapfarsc.qe.firstrun.util.Dominios.FileTypeEnum;
 
 public class InitFirstRun {
 
-
 	public static void main(String[] args) throws Exception{
 		int countGravados = 0;
 		int countLidos = 0;
